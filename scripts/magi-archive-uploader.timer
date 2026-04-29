@@ -1,0 +1,11 @@
+[Unit]
+Description=Magi Archive Uploader (every 30 minutes)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+Unit=magi-archive-uploader.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

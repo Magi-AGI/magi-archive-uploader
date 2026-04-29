@@ -1,0 +1,31 @@
+{
+  "name": "magi-archive-uploader",
+  "version": "0.1.0",
+  "description": "Uploads session media (Foundry video, Discord sessions, Mattermost exports) to S3 with verify-then-delete retention.",
+  "main": "dist/index.js",
+  "bin": {
+    "magi-archive-uploader": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.687.0",
+    "@aws-sdk/lib-storage": "^3.687.0",
+    "better-sqlite3": "^11.5.0",
+    "dotenv": "^16.4.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}
