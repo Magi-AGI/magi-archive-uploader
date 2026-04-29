@@ -30,6 +30,11 @@ function parseArgs(argv: string[]): CliOptions {
     console.error('Cannot combine --upload-only and --cleanup-only');
     process.exit(2);
   }
+  // --dry-run-cleanup is a no-op preview: it implies --cleanup-only so we
+  // never trigger uploads when the user just wants to see what cleanup would do.
+  if (opts.dryRunCleanup) {
+    opts.cleanupOnly = true;
+  }
   return opts;
 }
 
@@ -40,7 +45,7 @@ Usage:
   magi-archive-uploader              # upload pass + cleanup pass
   magi-archive-uploader --upload-only
   magi-archive-uploader --cleanup-only
-  magi-archive-uploader --dry-run-cleanup   # report what cleanup would delete (no-op)
+  magi-archive-uploader --dry-run-cleanup   # preview cleanup only; never uploads
 
 Configuration via .env (see .env.example).`);
 }
